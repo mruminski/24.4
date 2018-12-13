@@ -3,19 +3,15 @@ const formatTime = timeInSeconds => {
   var m = Math.floor((timeInSeconds / 60) % 60);
   var s = timeInSeconds % 60;
 
-  if (h > 0 && m > 0 && s > 0) return h + "h " + m + "m " + s + "s";
+  const time = [];
 
-  if (h > 0 && m > 0) return h + "h " + m + "m";
+  if (h > 0) time.push(`${h}h`);
 
-  if (h > 0 && s > 0) return h + "h " + s + "s";
+  if (m > 0) time.push(`${m}m`);
 
-  if (h > 0) return h + "h";
+  if (s > 0) time.push(`${s}s`);
 
-  if (m > 0 && s > 0) return m + "m " + s + "s";
-
-  if (m > 0) return m + "m";
-
-  return timeInSeconds == undefined ? "0s" : `${timeInSeconds}s`;
+  return timeInSeconds == undefined ? "0s" : time.join(" ");
 };
 
 module.exports = formatTime;
